@@ -1,11 +1,12 @@
 import httpx
+import os
 import asyncio  
 from datetime import datetime  
 from fastapi import FastAPI, UploadFile, File, BackgroundTasks, Query
 from parser import parse_line 
 
 app = FastAPI()
-DISCORD_WEBHOOK_URL = "https://discordapp.com/api/webhooks/1507847076241739831/bDF8zIZQqKj-bxHmkc9P9JYuG-E7q6sfDSktP4rYAEfd9Ba4dCKOn__ZVe_6LAHI7Lbs"
+DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
 async def send_discord_alert(payload: dict):
     """Asynchronously dispatches an incident card to the DevOps/SecOps channel."""
