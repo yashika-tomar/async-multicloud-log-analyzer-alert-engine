@@ -1,0 +1,74 @@
+2026-05-24T11:42:10.112Z INFO  Cloud Build started for project: ecommerce-platform
+
+2026-05-24T11:42:11.234Z INFO  Fetching source from Cloud Source Repository
+2026-05-24T11:42:14.567Z INFO  Source fetch completed successfully
+
+2026-05-24T11:42:15.001Z INFO  Starting build step #1 - Install Dependencies
+
+Step #1 - "Install":
+npm install
+
+added 612 packages in 8s
+found 0 vulnerabilities
+
+2026-05-24T11:42:25.890Z INFO  Build step #1 completed successfully
+
+2026-05-24T11:42:26.001Z INFO  Starting build step #2 - Run Tests
+
+Step #2 - "Test":
+npm test
+
+PASS src/tests/auth.test.js
+PASS src/tests/profile.test.js
+FAIL src/tests/order.test.js
+
+● Order Service › should create order successfully
+
+TypeError: Cannot read properties of undefined (reading 'userId')
+
+    at createOrder (/workspace/src/services/orderService.js:58:22)
+    at Object.<anonymous> (/workspace/src/tests/order.test.js:24:5)
+
+Test Suites: 1 failed, 2 passed, 3 total
+Tests:       1 failed, 10 passed, 11 total
+
+ERROR: Unit tests failed
+
+2026-05-24T11:42:35.678Z ERROR Build step #2 failed
+
+2026-05-24T11:42:36.001Z INFO  Starting build step #3 - Build Application
+
+Step #3 - "Build":
+npm run build
+
+> ecommerce-platform@1.0.0 build
+> react-scripts build
+
+Creating an optimized production build...
+
+Failed to compile.
+
+Module not found: Error: Can't resolve './components/Checkout'
+
+ERROR: React build compilation failed
+
+2026-05-24T11:42:48.234Z ERROR Build step #3 failed with exit code 1
+
+2026-05-24T11:42:49.001Z ERROR Cloud Build failed
+
+--------------------------------------------------------------------------------
+
+BUILD FAILURE: Build step failure detected
+
+Project ID: ecommerce-platform-prod
+Build ID: a1b2c3d4-e5f6-7890-gh12-ijklmnopqrst
+
+Failed Steps:
+- Run Tests
+- Build Application
+
+Failure Reason:
+React build compilation failed
+
+Status:
+FAILED

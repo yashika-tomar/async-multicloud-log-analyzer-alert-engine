@@ -1,0 +1,76 @@
+2026-05-24T08:10:11.1023456Z ##[section]Starting: Initialize job
+2026-05-24T08:10:11.1029987Z Agent name: 'Azure-Agent-01'
+2026-05-24T08:10:11.1036543Z Agent machine name: 'build-vm-linux'
+2026-05-24T08:10:11.1041234Z Current agent version: '3.245.0'
+2026-05-24T08:10:11.1102345Z Operating System
+2026-05-24T08:10:11.1109876Z Ubuntu
+2026-05-24T08:10:11.1116543Z 22.04.3
+2026-05-24T08:10:11.1128765Z ##[section]Finishing: Initialize job
+
+2026-05-24T08:10:12.0012345Z ##[section]Starting: Checkout Code
+2026-05-24T08:10:12.0109876Z ==============================================================================
+2026-05-24T08:10:12.0116543Z Task         : Get sources
+2026-05-24T08:10:12.0123456Z Description  : Get sources from a repository
+2026-05-24T08:10:12.0139876Z ==============================================================================
+2026-05-24T08:10:15.1209876Z Syncing repository: job-portal-app (Git)
+2026-05-24T08:10:18.2345678Z git version
+2026-05-24T08:10:18.3456789Z git version 2.43.0
+2026-05-24T08:10:20.4567890Z Checking out commit: 8d3a91fbc12a
+2026-05-24T08:10:22.5678901Z ##[section]Finishing: Checkout Code
+
+2026-05-24T08:10:23.0001234Z ##[section]Starting: Install Dependencies
+2026-05-24T08:10:23.0015678Z ==============================================================================
+2026-05-24T08:10:23.0023456Z Task         : Command line
+2026-05-24T08:10:23.0038765Z Description  : Run a command line script
+2026-05-24T08:10:23.0046543Z ==============================================================================
+2026-05-24T08:10:23.1009876Z Generating script.
+2026-05-24T08:10:23.1016543Z Script contents:
+2026-05-24T08:10:23.1023456Z npm install
+2026-05-24T08:10:23.1039876Z ========================== Starting Command Output ==========================
+2026-05-24T08:10:23.1101234Z /usr/bin/bash --noprofile --norc /home/vsts/work/_temp/install.sh
+
+2026-05-24T08:10:30.4567890Z added 412 packages in 7s
+2026-05-24T08:10:30.5678901Z found 0 vulnerabilities
+2026-05-24T08:10:30.6789012Z ##[section]Finishing: Install Dependencies
+
+2026-05-24T08:10:31.0012345Z ##[section]Starting: Run Unit Tests
+2026-05-24T08:10:31.0023456Z ==============================================================================
+2026-05-24T08:10:31.0034567Z Task         : Command line
+2026-05-24T08:10:31.0045678Z Description  : Run tests
+2026-05-24T08:10:31.0056789Z ==============================================================================
+2026-05-24T08:10:31.1001234Z Script contents:
+2026-05-24T08:10:31.1012345Z npm test
+2026-05-24T08:10:31.1023456Z ========================== Starting Command Output ==========================
+2026-05-24T08:10:31.1109876Z /usr/bin/bash --noprofile --norc /home/vsts/work/_temp/test.sh
+
+2026-05-24T08:10:35.4567890Z PASS src/tests/auth.test.js
+2026-05-24T08:10:36.5678901Z PASS src/tests/user.test.js
+2026-05-24T08:10:38.6789012Z FAIL src/tests/payment.test.js
+2026-05-24T08:10:38.7890123Z   ● Payment Service › should create payment intent
+2026-05-24T08:10:38.8901234Z
+2026-05-24T08:10:38.9012345Z     TypeError: Cannot read properties of undefined (reading 'amount')
+2026-05-24T08:10:38.9123456Z
+2026-05-24T08:10:38.9234567Z       at createPayment (src/services/paymentService.js:42:18)
+2026-05-24T08:10:38.9345678Z       at Object.<anonymous> (src/tests/payment.test.js:18:7)
+
+2026-05-24T08:10:39.0456789Z Test Suites: 1 failed, 2 passed, 3 total
+2026-05-24T08:10:39.1567890Z Tests:       1 failed, 8 passed, 9 total
+2026-05-24T08:10:39.2678901Z ##[error]Bash exited with code '1'.
+2026-05-24T08:10:39.3789012Z ##[section]Finishing: Run Unit Tests
+
+2026-05-24T08:10:40.0012345Z ##[section]Starting: Build Application
+2026-05-24T08:10:40.1123456Z npm run build
+
+2026-05-24T08:10:42.2234567Z > job-portal@1.0.0 build
+2026-05-24T08:10:42.3345678Z > react-scripts build
+
+2026-05-24T08:10:48.4456789Z Creating an optimized production build...
+2026-05-24T08:10:55.5567890Z Failed to compile.
+
+2026-05-24T08:10:55.6678901Z Module not found: Error: Can't resolve './components/Dashboard'
+2026-05-24T08:10:55.7789012Z in '/home/vsts/work/1/s/src/pages'
+
+2026-05-24T08:10:55.8890123Z ##[error]Process completed with exit code 1.
+2026-05-24T08:10:56.0001234Z ##[section]Finishing: Build Application
+
+2026-05-24T08:10:56.1112345Z ##[error]Pipeline failed.

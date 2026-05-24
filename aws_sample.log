@@ -1,0 +1,30 @@
+[Container] 2026/05/24 09:15:11.102 Running on CodeBuild On-demand
+
+[Container] 2026/05/24 09:15:14.001 Entering phase INSTALL
+[Container] 2026/05/24 09:15:14.234 Running command npm install
+
+added 528 packages in 6s
+
+[Container] 2026/05/24 09:15:21.001 Entering phase BUILD
+[Container] 2026/05/24 09:15:21.234 Running command npm run build
+
+> ecommerce-app@1.0.0 build
+> react-scripts build
+
+Creating an optimized production build...
+
+Failed to compile.
+
+Module not found: Error: Can't resolve './components/Dashboard'
+
+##[error] Build failed during React compilation
+
+[Container] 2026/05/24 09:15:35.567 Command did not exit successfully npm run build exit status 1
+
+[Container] 2026/05/24 09:15:35.890 Phase complete: BUILD State: FAILED
+
+[Container] 2026/05/24 09:15:36.001 Phase context status code: COMMAND_EXECUTION_ERROR Message: Error while executing command: npm run build. Reason: exit status 1
+
+[FAILED] AWS CodeBuild build failed
+
+Pipeline failed.
