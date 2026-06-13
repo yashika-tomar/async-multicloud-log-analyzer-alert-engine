@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-analyzer-deployment
+  labels:
+    app: log-analyzer
+spec:
+  replicas: 2 # 🚀 Runs two instances simultaneously for high-availability load balancing
+  selector:
+    matchLabels:
+      app: log-analyzer
+  template:
+    metadata:
+      labels:
+        app: log-analyzer
+    spec:
+      containers:
+      - name: log-analyzer-engine
+        image: 926692/async-log-analyzer:latest # Your built Docker image
+        ports:
+        - containerPort: 8000
+        # 🔐 Dynamic out-of-band environment variable injection
+        env:
+        - name: DISCORD_WEBHOOK_URL
+          valueFrom:
+            secretKeyRef:
+              name: log-analyzer-secrets
+              key: DISCORD_WEBHOOK_URL
+        # 🏥 Production Health Check Probes
+        livenessProbe:
+          httpGet:
+            path: /docs
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 10

@@ -1,11 +1,13 @@
 import httpx
 import os
+from dotenv import load_dotenv
 import asyncio  
 from datetime import datetime  
 from fastapi import FastAPI, UploadFile, File, BackgroundTasks, Query
 from parser import parse_line 
 
 app = FastAPI()
+load_dotenv()
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
 async def send_discord_alert(payload: dict):
