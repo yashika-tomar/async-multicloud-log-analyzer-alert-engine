@@ -191,12 +191,3 @@ Expected Result: The webpage will instantly return a Successfully Queued status 
 
 
 ---
-
-### 🏁 Update Your Repository One Last Time
-
-Save your local `README.md` file with this text, open your terminal, and run:
-
-```powershell
-git add README.md parser.py
-git commit -m "docs: finalize bulletproof, copy-paste runnable instructions for the readme"
-git push origin main
