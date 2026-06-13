@@ -18,6 +18,7 @@ Self-Healing Orchestration: Configured for Kubernetes with multiple replicas for
 Enterprise-Grade Security: Sensitive keys (like the Discord Webhook URL) are completely removed from the source code. They are stored securely in a Kubernetes Secret vault and injected into the app's memory at runtime.
 
 🏗️ Architecture Data Flow
+```text
 [ Raw Log File Uploaded ] 
           │
           ▼
